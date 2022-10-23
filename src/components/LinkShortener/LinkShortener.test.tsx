@@ -1,12 +1,15 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import LinkShortener from "./LinkShortener";
 
 test("input should be empty", () => {
+  render(<LinkShortener />);
   const input = screen.getByRole("textbox");
   expect(input).toHaveDisplayValue("");
 });
 
 test("should show error message if link is invalid", async () => {
+  render(<LinkShortener />);
   const input = screen.getByRole("textbox");
   const errorMsg = screen.queryByTestId("error");
 
@@ -23,6 +26,7 @@ test("should show error message if link is invalid", async () => {
 });
 
 test("should not show error message if link is valid", async () => {
+  render(<LinkShortener />);
   const input = screen.getByRole("textbox");
   const errorMsg = screen.queryByTestId("error");
 
@@ -39,7 +43,7 @@ test("should not show error message if link is valid", async () => {
 });
 
 test("should show error message if field is empty", () => {
-  const input = screen.getByRole("textbox");
+  render(<LinkShortener />);
   const errorMsg = screen.queryByTestId("error");
 
   userEvent.click(screen.getByRole("button"));
@@ -48,6 +52,7 @@ test("should show error message if field is empty", () => {
 });
 
 test("should not show error message if field isn't empty", async () => {
+  render(<LinkShortener />);
   const input = screen.getByRole("textbox");
   const errorMsg = screen.queryByTestId("error");
 
