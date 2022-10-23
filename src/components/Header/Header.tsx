@@ -1,18 +1,7 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import Illustration from "../../assets/illustration-working.svg";
 
 import Btn from "../Btn/Btn";
-
-export const LocationDisplay = () => {
-  const location = useLocation();
-
-  return (
-    <div className="hidden" data-testid="location-display">
-      {location.pathname}
-    </div>
-  );
-};
 
 const Header = () => {
   return (
@@ -33,7 +22,6 @@ const Header = () => {
         </p>
         <Btn goTo="getstarted">Get Started</Btn>
       </div>
-      <LocationDisplay />
     </div>
   );
 };

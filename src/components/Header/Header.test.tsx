@@ -1,16 +1,9 @@
-// import React from "react";
-// import { render, screen } from "@testing-library/react";
-import Header, { LocationDisplay } from "./Header";
-// import GetStarted from "../../GetStarted";
-// import userEvent from "@testing-library/user-event";
-// import { BrowserRouter, MemoryRouter } from "react-router-dom";
-
+import Header from "./Header";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import "@testing-library/jest-dom";
-// import {App, LocationDisplay} from './app'
-import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 import GetStarted from "../../GetStarted";
 
 test("button should have text get started", () => {
