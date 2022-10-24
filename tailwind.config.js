@@ -13,7 +13,12 @@ module.exports = {
       darkBlue: "#35323E",
       darkViolet: "#232127",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "shorten-desktop": "url(/src/assets/bg-shorten-desktop.svg)",
+        "shorten-mobile": "url(/src/assets/bg-shorten-mobile.svg)",
+      },
+    },
   },
   plugins: [
     function ({ addVariant }) {

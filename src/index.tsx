@@ -19,7 +19,6 @@ root.render(
         <Route path="/signin" element={<SignIn />} />
       </Routes>
     </BrowserRouter>
-    ,
   </React.StrictMode>
 );
 
