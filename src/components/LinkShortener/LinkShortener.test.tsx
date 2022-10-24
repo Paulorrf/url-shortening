@@ -10,43 +10,38 @@ test("input should be empty", () => {
 
 test("should show error message if link is invalid", async () => {
   render(<LinkShortener />);
+
   const input = screen.getByRole("textbox");
-  const errorMsg = screen.queryByTestId("error");
 
-  await userEvent.type(input, "link.com.br");
+  userEvent.type(input, "abcd");
 
-  userEvent.click(screen.getByRole("button"));
+  await userEvent.click(screen.getByRole("button"));
 
-  //should always have letters dot and letters
-  //example: google.com
-  expect(screen.getByRole("textbox")).toEqual(
-    expect.stringMatching(/^[a-zA-Z]\.[a-zA-Z]$/)
-  );
+  const errorMsg = screen.getByTestId("error");
+
   expect(errorMsg).toHaveTextContent("please add a valid link");
 });
 
 test("should not show error message if link is valid", async () => {
   render(<LinkShortener />);
+
   const input = screen.getByRole("textbox");
+
+  userEvent.type(input, "link.com");
+
+  await userEvent.click(screen.getByRole("button"));
+
   const errorMsg = screen.queryByTestId("error");
 
-  await userEvent.type(input, "link.com");
-
-  userEvent.click(screen.getByRole("button"));
-
-  //should always have letters dot and letters
-  //example: google.com
-  expect(screen.getByRole("textbox")).toEqual(
-    expect.stringMatching(/^[a-zA-Z]\.[a-zA-Z]$/)
-  );
   expect(errorMsg).not.toBeInTheDocument();
 });
 
-test("should show error message if field is empty", () => {
+test("should show error message if field is empty", async () => {
   render(<LinkShortener />);
-  const errorMsg = screen.queryByTestId("error");
 
-  userEvent.click(screen.getByRole("button"));
+  await userEvent.click(screen.getByRole("button"));
+
+  const errorMsg = screen.getByTestId("error");
 
   expect(errorMsg).toHaveTextContent("please add a link");
 });

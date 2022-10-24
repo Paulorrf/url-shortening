@@ -6,14 +6,16 @@ const LinkShortener = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (!/^[a-zA-Z]\.[a-zA-Z]$/.test(linkValue)) {
+    if (linkValue === "") {
+      setError("please add a link");
+    } else if (!/^[a-zA-Z]+\.[a-zA-Z]+$/.test(linkValue)) {
       setError("please add a valid link");
       return;
     }
   };
 
   return (
-    <div className="">
+    <form name="form" className="">
       {error !== "" && <p data-testid="error">{error}</p>}
       <input
         className="border border-darkViolet"
@@ -21,6 +23,7 @@ const LinkShortener = () => {
         onChange={(e) => setLinkValue(e.target.value)}
         placeholder="Shorten a link here..."
         id="link-shortener"
+        name="shorten"
       />
       <button
         className="border border-darkViolet"
@@ -28,7 +31,7 @@ const LinkShortener = () => {
       >
         Shorten it!
       </button>
-    </div>
+    </form>
   );
 };
 
