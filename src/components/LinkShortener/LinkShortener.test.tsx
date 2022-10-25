@@ -8,6 +8,26 @@ test("input should be empty", () => {
   expect(input).toHaveDisplayValue("");
 });
 
+test("should not allow invalid link", async () => {
+  render(<LinkShortener />);
+
+  const input = screen.getByRole("textbox") as HTMLInputElement;
+
+  userEvent.type(input, "abcd");
+
+  expect(input.value).not.toMatch(/^[a-zA-Z]+\.[a-zA-Z]+$/);
+});
+
+test("should allow valid link", async () => {
+  render(<LinkShortener />);
+
+  const input = screen.getByRole("textbox") as HTMLInputElement;
+
+  userEvent.type(input, "link.com");
+
+  expect(input.value).toMatch(/^[a-zA-Z]+\.[a-zA-Z]+$/);
+});
+
 test("should show error message if link is invalid", async () => {
   render(<LinkShortener />);
 
@@ -20,26 +40,6 @@ test("should show error message if link is invalid", async () => {
   const errorMsg = screen.getByTestId("error");
 
   expect(errorMsg).toHaveTextContent("please add a valid link");
-});
-
-test("should not allow invalid link", async () => {
-  render(<LinkShortener />);
-
-  const input = screen.getByRole("textbox") as HTMLInputElement;
-
-  userEvent.type(input, "abcd");
-
-  expect(input.value).not.toMatch(/^[a-zA-Z]+\.[a-zA-Z]+$/);
-});
-
-test("should allow invalid link", async () => {
-  render(<LinkShortener />);
-
-  const input = screen.getByRole("textbox") as HTMLInputElement;
-
-  userEvent.type(input, "link.com");
-
-  expect(input.value).toMatch(/^[a-zA-Z]+\.[a-zA-Z]+$/);
 });
 
 test("should not show error message if link is valid", async () => {
