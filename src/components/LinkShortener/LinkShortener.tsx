@@ -19,7 +19,6 @@ const LinkShortener = () => {
       name="form"
       className="grid w-full grid-cols-1 justify-between rounded-lg bg-darkBlue bg-shorten-mobile bg-contain bg-right bg-no-repeat p-4 md:grid-cols-[3fr_minmax(200px,_1fr)] md:bg-shorten-desktop md:p-8"
     >
-      {error !== "" && <p data-testid="error">{error}</p>}
       <input
         className="mb-2 rounded-lg py-2 pl-4"
         type="text"
@@ -34,6 +33,11 @@ const LinkShortener = () => {
       >
         Shorten it!
       </button>
+      {error !== "" && (
+        <p className="pl-4 text-error" data-testid="error">
+          {error}
+        </p>
+      )}
     </form>
   );
 };
