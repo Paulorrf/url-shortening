@@ -5,7 +5,9 @@ import CustomizableIcon from "../../assets/icon-fully-customizable.svg";
 import ContentCard from "./ContentCard";
 
 function HorizontalLine() {
-  return <div className="mx-auto h-20 w-2 bg-btnBg"></div>;
+  return (
+    <div className="mx-auto h-20 w-2 bg-btnBg md:my-auto md:h-2 md:w-20"></div>
+  );
 }
 
 const Content = () => {
@@ -19,30 +21,36 @@ const Content = () => {
         </p>
       </div>
 
-      <ContentCard
-        Icon={BrandIcon}
-        title="Brand Recognition"
-        text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
+      <div className="md:flex">
+        <ContentCard
+          Icon={BrandIcon}
+          title="Brand Recognition"
+          text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
           facere, ipsum quod consequatur reiciendis vel?"
-      />
+        />
 
-      <HorizontalLine />
+        <HorizontalLine />
 
-      <ContentCard
-        Icon={DetailedIcon}
-        title="Detailed Records"
-        text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
+        <div className="md:mt-12">
+          <ContentCard
+            Icon={DetailedIcon}
+            title="Detailed Records"
+            text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
           facere, ipsum quod consequatur reiciendis vel?"
-      />
+          />
+        </div>
 
-      <HorizontalLine />
+        <HorizontalLine />
 
-      <ContentCard
-        Icon={CustomizableIcon}
-        title="Fully Customizable"
-        text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
+        <div className="md:mt-24">
+          <ContentCard
+            Icon={CustomizableIcon}
+            title="Fully Customizable"
+            text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis
           facere, ipsum quod consequatur reiciendis vel?"
-      />
+          />
+        </div>
+      </div>
     </div>
   );
 };
