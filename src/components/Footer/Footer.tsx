@@ -7,7 +7,7 @@ import FacebookIcon from "../../assets/icon-facebook.svg";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col justify-center bg-darkBlue pt-12 text-center child:mb-8 md:flex-row">
+    <div className="grid grid-cols-1 justify-center bg-darkViolet pt-12 text-center child:mb-8 md:grid-cols-5 md:flex-row md:px-12">
       <div className="fill-current mx-auto fill-white">
         <img className="fill-current fill-white" src={Logo} alt="logo" />
       </div>
@@ -41,7 +41,7 @@ const Footer = () => {
       </div>
 
       <div>
-        <ul className="flex justify-between px-24">
+        <ul className="flex justify-between px-24 md:flex-col md:px-12 md:child:mb-2 lg:flex-row lg:child:mb-0">
           <li>
             <img src={FacebookIcon} alt="facebook icon" />
           </li>
